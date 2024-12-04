@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'tasks',
     'projects',
     'notifications',
+    'issues',
+    'comments',
     'drf_spectacular',
 
 ]

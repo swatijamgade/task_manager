@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+
+
 
 class Issue(models.Model):
     title = models.CharField(max_length=255)
@@ -7,14 +9,14 @@ class Issue(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    STATUS_CHOICES = (
-        ('open', 'Open'),
-        ('in_progress', 'In Progress'),
-        ('closes', 'Closed'),
-    )
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='open')
-    assigned_to= models.ForeignKey(User, related_name='assigned_issues', null=True, blank=True, on_delete=models.SET_NULL)
-
     def __str__(self):
+        return self.title
 
-        return f"{self.title} ({self.status})"
+    # Custom method to fetch all comments for an issue
+    def get_Comment(self):
+        return self.comments.all()
+
+    # Custom method to add a comment to the issue
+    def add_comment(self, user, text):
+        return self.comments.create(user=user, text=text)
+

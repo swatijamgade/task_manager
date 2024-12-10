@@ -27,7 +27,10 @@ urlpatterns = [
     path('api/notifications/', include('notifications.urls')),
     path('api/issues/', include('issues.urls')),
     path('api/comments/', include('comments.urls')),
+    path('api/worklogs/', include('worklogs.urls')),
+    path('api/backlogissue/', include('backlogissue.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
+
